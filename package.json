@@ -1,0 +1,14 @@
+{
+  "description": "X",
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "ejs": "^2.6.1",
+    "exports": "0.0.1",
+    "express": "*",
+    "md5": "^2.2.1",
+    "mysql": "^2.16.0",
+    "socket.io": "^2.1.1"
+  }
+}

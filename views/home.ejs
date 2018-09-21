@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script crossorigin src="https://unpkg.com/react@16/umd/react.development.js"></script>
+    <script crossorigin src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>
+    <script crossorigin src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.8.23/browser.min.js"></script>
+    <script
+    src="https://code.jquery.com/jquery-3.3.1.min.js"
+    integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8="
+    crossorigin="anonymous"></script>
+</head>
+<body>
+    <div id="content">
+
+    </div>
+
+    <script type="text/babel">
+    
+        class MyDom extends React.Component {
+            render() {
+                return <h1>Hello {this.props.username}</h1>
+            }
+        }
+
+        let el = React.createElement(MyDom, {username:"<%= data[0].name %>"});
+        ReactDOM.render(
+            el,
+            document.getElementById('content')
+        )
+
+        // function newDom (props){
+        //     return <h1>Username {props.username}</h1>;
+        // }
+        // el = React.createElement(newDom, {name:"Nguyen"});
+        // ReactDOM.render(
+        //     el,
+        //     document.getElementById('content')
+        // )
+    </script>
+</body>
+</html>
