@@ -1,16 +1,31 @@
-var md5 = require('md5');
+//////////////////////////////////
+//   Create connection to mysql
+//
 var mysql = require('mysql');
-var con = mysql.createConnection({
+const con = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "",
     database: "voyager"
 });
 
-exports.getInfo = function(username) {
+/////////////////////////////
+//   Libraries and Models
+//
+var md5 = require('md5');
+
+////////////////////////////
+//   Export functions
+//
+
+exports.getInfo = function(username, callback) {
     let sql = `SELECT * FROM users WHERE name ='${username}' limit 0,1`;
-    con.query(sql, function(err, result){
-        return result;
+    con.query(sql, function(err, result) {
+        con.on('error', function(err) {
+            console.log("[mysql error]",err);
+            callback(err);
+        });
+        callback(result);
     });
 };
 

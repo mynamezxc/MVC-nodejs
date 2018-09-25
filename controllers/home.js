@@ -7,16 +7,6 @@ var server = app.listen(3000);
 var http = require('http');
 var io = require('socket.io').listen(server);
 
-
-///////////////////////////////////////
-//  Body parse to get POST params
-//
-var bodyParser = require('body-parser');
-app.use( bodyParser.json() );       // to support JSON-encoded bodies
-app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
-    extended: true
-})); 
-
 /////////////////////////////////////////////////////
 //  Include models and libraries for controller
 //
@@ -29,14 +19,21 @@ var md5 = require('md5');
 exports.__constructer = function (req, res) {
     var namespace = io.of('/namespace');
     namespace.on('connection', function(socket) {
-        console.log(socket.id);
+        //console.log(socket.id);
     });
     res.render('login');
     res.end();
 }
 
 exports.__login = function (req, res) {
-    if(req.body.username !== undefined) {
-
-    } 
+    if(req.body !== undefined) {
+        username = req.body.username;
+        password = md5(req.body.password);
+        userModel.getInfo(username, function(result){
+            res.send("123");
+        });
+    } else {
+        //res.send('The username or password is missing');
+    }
+    res.end();
 }

@@ -10,6 +10,16 @@ app.listen(80);
 //
 let home = require('./controllers/home');
 
+/////////////////////////////////////////////////////////
+//  Body parse to get POST params FOR HOME CONTROLLER
+//
+var bodyParser = require('body-parser');
+app.use( bodyParser.json() );       // to support JSON-encoded bodies
+app.use(bodyParser.urlencoded({     // to support URL-encoded bodies
+    extended: true
+})); 
+
+
 ////////////////////////////////////////////
 //   Set view engine and public folder
 //
