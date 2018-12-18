@@ -30,7 +30,7 @@ exports.__login = function (req, res) {
         username = req.body.username;
         password = md5(req.body.password);
         userModel.getInfo(username, function(result){
-            res.send("123");
+            console.log(result);
         });
     } else {
         //res.send('The username or password is missing');

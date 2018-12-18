@@ -6,7 +6,7 @@ const con = mysql.createConnection({
     host: "localhost",
     user: "root",
     password: "",
-    database: "voyager"
+    database: "hotcourses"
 });
 
 /////////////////////////////
@@ -19,10 +19,11 @@ var md5 = require('md5');
 //
 
 exports.getInfo = function(username, callback) {
-    let sql = `SELECT * FROM users WHERE name ='${username}' limit 0,1`;
+    let sql = `SELECT * FROM users WHERE email ='${username}' limit 0,1`;
     con.query(sql, function(err, result) {
+        console.log(result);
         con.on('error', function(err) {
-            console.log("[mysql error]",err);
+            console.log("[mysql error]");
             callback(err);
         });
         callback(result);
